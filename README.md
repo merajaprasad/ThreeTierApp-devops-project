@@ -18,13 +18,13 @@ Explore the `Jenkins-Server-TF` directory to find Terraform scripts for setting 
 The `Kubernetes-Manifests-Files` directory holds Kubernetes manifests for deploying your application on AWS EKS. Understand and customize these files to suit your project needs.
 
 ## Project Details
-🛠️ **Tools Explored:**
+ **Tools Explored:**
 - Terraform & AWS CLI for AWS infrastructure
 - Jenkins, Sonarqube, Terraform, Kubectl, and more for CI/CD setup
 - Helm, Prometheus, and Grafana for Monitoring
 - ArgoCD for GitOps practices
 
-🚢 **High-Level Overview:**
+ **High-Level Overview:**
 - IAM User setup & Terraform magic on AWS
 - Jenkins deployment with AWS integration
 - EKS Cluster creation & Load Balancer configuration
