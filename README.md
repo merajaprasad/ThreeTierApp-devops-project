@@ -3,7 +3,7 @@
 ## Project Overview
 The project involves deploying a Three-Tier Web Application using ReactJS, NodeJS, and MongoDB, with deployment on AWS EKS.
 
-[View on Eraser![](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg/preview?elements=ig4UqOgNPFl1dX15b2Vwkg&type=embed)](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg?elements=ig4UqOgNPFl1dX15b2Vwkg)
+[View on Eraser!](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg?elements=ig4UqOgNPFl1dX15b2Vwkg)
 
 ## Application Code
 The `Application-Code` directory contains the source code for the Three-Tier Web Application. Dive into this directory to explore the frontend and backend implementations.
