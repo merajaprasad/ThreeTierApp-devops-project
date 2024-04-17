@@ -3,17 +3,6 @@
 ## Overview
 The project involves deploying a Three-Tier Web Application using ReactJS, NodeJS, and MongoDB, with deployment on AWS EKS.
 
-## Prerequisites
-- Basic knowledge of Docker, and AWS services.
-- An AWS account with necessary permissions.
-
-## Challenge Steps
-- [Application Code](#application-code)
-- [Jenkins Pipeline Code](#jenkins-pipeline-code)
-- [Jenkins Server Terraform](#jenkins-server-terraform)
-- [Kubernetes Manifests Files](#kubernetes-manifests-files)
-- [Project Details](#project-details)
-
 ## Application Code
 The `Application-Code` directory contains the source code for the Three-Tier Web Application. Dive into this directory to explore the frontend and backend implementations.
 
@@ -48,13 +37,25 @@ To get started with this project, refer to our [comprehensive guide](https://ama
 
 ### Step 1: IAM Configuration
 - Create a user `eks-admin` with `AdministratorAccess`.
-- Generate Security Credentials: Access Key and Secret Access Key.
+- Generate AWS Security Credentials: Access Key and Secret Access Key.
 
 ### Step 2: EC2 Setup
-- Launch an Ubuntu instance in your favourite region (eg. region `us-west-2`).
-- SSH into the instance from your local machine.
+- Launch an Ubuntu instance and do SSH into the instance from your local machine.
+  
+  **Clone the Repositoty**
+```bash
+git clone <repository-URL>
+```
 
-### Step 3: Install AWS CLI v2
+### Step 3: Install Docker
+``` shell
+sudo apt-get update -y
+sudo apt install docker.io -y
+docker ps
+sudo chown $USER /var/run/docker.sock
+```
+
+### Step 4: Install AWS CLI v2
 ``` shell
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt install unzip
@@ -63,13 +64,6 @@ sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin --update
 aws configure
 ```
 
-### Step 4: Install Docker
-``` shell
-sudo apt-get update
-sudo apt install docker.io
-docker ps
-sudo chown $USER /var/run/docker.sock
-```
 
 ### Step 5: Install kubectl
 ``` shell
