@@ -1,4 +1,4 @@
-# #ThreeTierApp Devops Project
+# ThreeTierApp Devops Project
 
 ## Overview
 The project involves deploying a Three-Tier Web Application using ReactJS, NodeJS, and MongoDB, with deployment on AWS EKS.
