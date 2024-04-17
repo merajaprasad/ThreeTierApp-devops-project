@@ -1,21 +1,21 @@
 # ThreeTierApp Devops Project
 
-### Project Overview
+## Project Overview
 The project involves deploying a Three-Tier Web Application using ReactJS, NodeJS, and MongoDB, with deployment on AWS EKS.
 
-### Application Code
+## Application Code
 The `Application-Code` directory contains the source code for the Three-Tier Web Application. Dive into this directory to explore the frontend and backend implementations.
 
-### Jenkins Pipeline Code
+## Jenkins Pipeline Code
 In the `Jenkins-Pipeline-Code` directory, you'll find Jenkins pipeline scripts. These scripts automate the CI/CD process, ensuring smooth integration and deployment of your application.
 
-### Jenkins Server Terraform
+## Jenkins Server Terraform
 Explore the `Jenkins-Server-TF` directory to find Terraform scripts for setting up the Jenkins Server on AWS. These scripts simplify the infrastructure provisioning process.
 
-### Kubernetes Manifests Files
+## Kubernetes Manifests Files
 The `Kubernetes-Manifests-Files` directory holds Kubernetes manifests for deploying your application on AWS EKS. Understand and customize these files to suit your project needs.
 
-### Project Details
+## Project Details
 🛠️ **Tools Explored:**
 - Terraform & AWS CLI for AWS infrastructure
 - Jenkins, Sonarqube, Terraform, Kubectl, and more for CI/CD setup
