@@ -3,6 +3,8 @@
 ## Project Overview
 The project involves deploying a Three-Tier Web Application using ReactJS, NodeJS, and MongoDB, with deployment on AWS EKS.
 
+[preview![](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg/preview?elements=ig4UqOgNPFl1dX15b2Vwkg&type=embed)](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg?elements=ig4UqOgNPFl1dX15b2Vwkg)
+
 ## Application Code
 The `Application-Code` directory contains the source code for the Three-Tier Web Application. Dive into this directory to explore the frontend and backend implementations.
 
@@ -42,7 +44,7 @@ To get started with this project, refer to our [comprehensive guide](https://ama
 ### Step 2: EC2 Setup
 - Launch an Ubuntu instance and do SSH into the instance from your local machine.
   
-  **Clone the Repositoty**
+### Clone the Repositoty**
 ```bash
 git clone <repository-URL>
 ```
@@ -51,9 +53,14 @@ git clone <repository-URL>
 ``` shell
 sudo apt-get update -y
 sudo apt install docker.io -y
+docker --version
 docker ps
 sudo chown $USER /var/run/docker.sock
 ```
+
+
+
+
 
 ### Step 4: Install AWS CLI v2
 ``` shell
