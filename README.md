@@ -154,10 +154,8 @@ kubectl apply -f .
 kubectl delete -f .
 ```
 
-
-
-
-### Step 9: Install AWS Load Balancer
+## Loadbalancer Setup
+### Install AWS Load Balancer
 ``` shell
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
 aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
