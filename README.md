@@ -5,6 +5,8 @@ The project involves deploying a Three-Tier Web Application using ReactJS, NodeJ
 
 [![](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg/preview?elements=ig4UqOgNPFl1dX15b2Vwkg&type=embed)](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg?elements=ig4UqOgNPFl1dX15b2Vwkg)
 
+[![](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg/preview?elements=iljAd0EwRpkBU_T-iMV7Tw&type=embed)](https://app.eraser.io/workspace/YW2RSs1i3JwonaT25oeg?elements=iljAd0EwRpkBU_T-iMV7Tw)
+
 ## Application Code
 The `Application-Code` directory contains the source code for the Three-Tier Web Application. Dive into this directory to explore the frontend and backend implementations.
 
@@ -125,14 +127,35 @@ aws eks update-kubeconfig --region us-west-2 --name three-tier-cluster
 kubectl get nodes
 ```
 
-### Step 8: Run Manifests
+## Run Manifests Files
+### create namespace
 ``` shell
 kubectl create namespace workshop
+```
+### create and run databse
+got inside `Kubernetes-Manifests-file/Database` and run below command
+```
+kubectl apply -f .
+
+kubectl delete -f .
+```
+### create and run backend
+got inside `Kubernetes-Manifests-file/Backend` and run below command
+```
+kubectl apply -f .
+
+kubectl delete -f .
+kubectl logs <podname> -n workshop      # database connection check
+```
+### create and run frontend
+got inside `Kubernetes-Manifests-file/Frontend` and run below command
+```
 kubectl apply -f .
 kubectl delete -f .
 ```
 
-### Step 9: Install AWS Load Balancer
+## Loadbalancer Setup
+### Install AWS Load Balancer
 ``` shell
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
 aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
