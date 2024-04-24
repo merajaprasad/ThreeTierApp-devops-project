@@ -152,25 +152,53 @@ got inside `Kubernetes-Manifests-file/Frontend` and run below command
 ```
 kubectl apply -f .
 kubectl delete -f .
+kubectl get pods -n workshop
 ```
 
-## Loadbalancer Setup
-### Install AWS Load Balancer
+## Loadbalancer Setup with EKS
+
+**Download LB IAM policy**
 ``` shell
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
-aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
+```
+**Create IAM policy**
+this policy help to connect EKS and Loadbalancer with each other
+```shell
+aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicyForEKS --policy-document file://iam_policy.json
+```
+**Attach IAM Policy with EKS cluster**
+```shell
 eksctl utils associate-iam-oidc-provider --region=us-west-2 --cluster=three-tier-cluster --approve
-eksctl create iamserviceaccount --cluster=three-tier-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::975050304823:policy/AWSLoadBalancerControllerIAMPolicy --approve --region=us-west-2
+```
+**Create IAM Service Account**
+IAM Service account help to communicate between services (EKS and ALB)
+```shell
+eksctl create iamserviceaccount --cluster=three-tier-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::975050304823:policy/AWSLoadBalancerControllerIAMPolicyForEKS --approve --region=us-west-2
 ```
 
-### Step 10: Deploy AWS Load Balancer Controller
+### Step 10: Deploy AWS Load Balancer Controller inside EKS-Cluster
+**Install Helm**
 ``` shell
 sudo snap install helm --classic
+```
+**Install and Add EKS Charts through Helm**
+```shell
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update eks
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=my-cluster --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
+helm repo list
+```
+**Install Load Balancer Controller in kube-system**
+```shell
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=three-tier-cluster --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
+```
+**Varify LB controller status**
+```shell
 kubectl get deployment -n kube-system aws-load-balancer-controller
+```
+**Apply ingress**
+```shell
 kubectl apply -f ingress.yaml
+kubectl get ing -n workshop
 ```
 
 ### Cleanup
@@ -185,7 +213,7 @@ eksctl delete cluster --name three-tier-cluster --region us-west-2
 - Submit a Pull Request with a detailed description of your changes.
 
 ## Support and collaboration
-For any queries or issues, please open an issue in the repository.
+For any queries, please open an issue in the repository.
 
----
+...
 
