@@ -153,6 +153,7 @@ kubectl get pods -n workshop
 ```
 
 ## Loadbalancer Setup with EKS
+### Step 1: IAM Service Account Setup
 
 **Download LB IAM policy**
 ``` shell
@@ -175,7 +176,7 @@ IAM Service account help to communicate between services (EKS and ALB)
 eksctl create iamserviceaccount --cluster=three-tier-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::975050304823:policy/AWSLoadBalancerControllerIAMPolicyForEKS --approve --region=us-west-2
 ```
 
-### Deploy AWS Load Balancer Controller inside EKS-Cluster
+### Step 2: Deploy AWS Load Balancer Controller inside EKS-Cluster
 **Install Helm**
 ``` shell
 sudo snap install helm --classic
@@ -212,7 +213,7 @@ eksctl delete cluster --name three-tier-cluster --region us-west-2
 - Submit a Pull Request with a detailed description of your changes.
 
 ## Support and collaboration
-For any queries, please open an issue in the repository.
+Thanks to [subham Laundhe](https://www.trainwithshubham.com/) helps to Create this Project. For any queries, please open an issue in the repository.
 
 ...
 
