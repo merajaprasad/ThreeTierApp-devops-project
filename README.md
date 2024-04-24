@@ -36,9 +36,6 @@ The `Kubernetes-Manifests-Files` directory holds Kubernetes manifests for deploy
 
 📈 **The journey covered everything from setting up tools to deploying a Three-Tier app, ensuring data persistence, and implementing CI/CD pipelines.**
 
-## Getting Started
-To get started with this project, refer to our [comprehensive guide](https://amanpathakdevops.medium.com/advanced-end-to-end-devsecops-kubernetes-three-tier-project-using-aws-eks-argocd-prometheus-fbbfdb956d1a) that walks you through IAM user setup, infrastructure provisioning, CI/CD pipeline configuration, EKS cluster creation, and more.
-
 ### Step 1: IAM Configuration
 - Create a user `eks-admin` with `AdministratorAccess`.
 - Generate AWS Security Credentials: Access Key and Secret Access Key.
@@ -78,7 +75,7 @@ RUN npm install
 COPY . .
 CMD ["npm", "start"]
 ```
-**build Docker image and run container**
+**Build Docker image and run container**
 ```
 docker build -t three-tier-frontend .
 docker run -d -p 3000:3000 three-tier-frontend:latest
@@ -132,14 +129,14 @@ kubectl get nodes
 ``` shell
 kubectl create namespace workshop
 ```
-### create and run databse
+### Create and run databse
 got inside `Kubernetes-Manifests-file/Database` and run below command
 ```
 kubectl apply -f .
 
 kubectl delete -f .
 ```
-### create and run backend
+### Create and run backend
 got inside `Kubernetes-Manifests-file/Backend` and run below command
 ```
 kubectl apply -f .
@@ -147,7 +144,7 @@ kubectl apply -f .
 kubectl delete -f .
 kubectl logs <podname> -n workshop      # database connection check
 ```
-### create and run frontend
+### Create and run frontend
 got inside `Kubernetes-Manifests-file/Frontend` and run below command
 ```
 kubectl apply -f .
@@ -162,6 +159,7 @@ kubectl get pods -n workshop
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
 ```
 **Create IAM policy**
+
 this policy help to connect EKS and Loadbalancer with each other
 ```shell
 aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicyForEKS --policy-document file://iam_policy.json
@@ -171,12 +169,13 @@ aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicyForEKS --p
 eksctl utils associate-iam-oidc-provider --region=us-west-2 --cluster=three-tier-cluster --approve
 ```
 **Create IAM Service Account**
+
 IAM Service account help to communicate between services (EKS and ALB)
 ```shell
 eksctl create iamserviceaccount --cluster=three-tier-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::975050304823:policy/AWSLoadBalancerControllerIAMPolicyForEKS --approve --region=us-west-2
 ```
 
-### Step 10: Deploy AWS Load Balancer Controller inside EKS-Cluster
+### Deploy AWS Load Balancer Controller inside EKS-Cluster
 **Install Helm**
 ``` shell
 sudo snap install helm --classic
