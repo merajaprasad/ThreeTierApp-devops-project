@@ -213,7 +213,7 @@ eksctl delete cluster --name three-tier-cluster --region us-west-2
 - Submit a Pull Request with a detailed description of your changes.
 
 ## Support and collaboration
-Thanks to [subham Laundhe](https://www.trainwithshubham.com/) helps to Create this Project. For any queries, please open an issue in the repository.
+Thanks to [Shubham Londhe](https://www.trainwithshubham.com/) helps to Create this Project. For any queries, please open an issue in the repository.
 
 ...
 
